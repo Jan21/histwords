@@ -44,6 +44,7 @@ def get_time_sims(self, word1):
         time_sims[year] = []
 
         for sim, word in embed.closest(word1, n=15):
+            sim = float(sim)
             ww = "%s|%s" % (word, year)
             nearest.append((sim, ww))
             if sim > 0.3:
@@ -77,18 +78,17 @@ def load_embeddings(filename=None):
 
         print "THIS MIGHT TAKE A WHILE..."
 
-        embeddings = SequentialEmbedding.load(filename, range(1840, 2000, 10))
+        embeddings = SequentialEmbedding.load(filename, range(2000, 2004))
         print "LOAD EMBEDDINGS TOOK %s" % (time.time() - start)
 
         EMBED_CACHE[filename] = embeddings
         return embeddings
 
-def get_embedding_list(dirname="embeddings"):
+def get_embedding_list(dirname="notebooks/learned_models/aligned"):
     import stat
     dirs = []
     for f in os.listdir(dirname):
         fname = os.path.join(dirname, f)
-
         if os.path.isdir(fname):
             dirs.append(fname)
 

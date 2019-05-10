@@ -139,3 +139,5 @@ sympy-plots-for-*.tex/
 
 # virtualenv
 histwords/
+DATA
+notebooks/learned_models

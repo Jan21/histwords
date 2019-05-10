@@ -96,6 +96,7 @@ def do_search(word1):
         for i in xrange(len(words)):
             word = words[i]
             ww, decade = word.split("|")
+            print(type(all_sims[word][0]))
             obj = {
                 "word" : ww,
                 "query" : all_terms[word],
@@ -144,7 +145,7 @@ def do_get(handler):
             if term:
                 ret = do_search(term)
             msg_dict.update(ret)
-
+        print(msg_dict)
         write_response(handler, 200, ['Content-type: text/json'], json.dumps(msg_dict))
 
 
